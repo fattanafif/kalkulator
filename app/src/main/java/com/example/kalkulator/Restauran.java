@@ -4,9 +4,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -37,18 +39,31 @@ public class Restauran extends AppCompatActivity {
         //inisialisasi recycleview
         recyclerView=findViewById(R.id.recyclerView);
         adapter = new RiwayatAdapter(list);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(Restauran.this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
         //event klik button
-        btnsimpan.setOnClickListener() {
+        btnsimpan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // ambil data
+                String makanan = etmakanan.getText().toString();
+                String qty = etqty.getText().toString();
+                String harga = etharga.getText().toString();
 
-            // ambil data
-        String makanan = etmakanan.getText().toString();
-        String qty = etqty.getText().toString();
-        String harga = etharga.getText().toString();
+                Toast.makeText(Restauran.this, makanan +"-"+ qty +"-"+ harga, Toast.LENGTH_SHORT).show();
+
+                //update list
+                list.add(makanan +"("+qty+")" + "@" + harga);
+                adapter.notifyDataSetChanged();
+            }
+        });
+
+
+
+
         }
 
     }
-}
+
