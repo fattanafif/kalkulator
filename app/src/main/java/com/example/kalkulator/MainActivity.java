@@ -2,16 +2,25 @@ package com.example.kalkulator;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView tvHasil;
     private EditText etAngka1, etAngka2;
     private Button btnTambah, btnKurang, btnKali, btnBagi;
+
+    //untuk adapter
+    private RecyclerView recyclerView;
+    private RiwayatAdapter adapter;
+    private ArrayList<String> list = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +38,13 @@ public class MainActivity extends AppCompatActivity {
         btnKali = findViewById(R.id.btnKali);
         btnBagi = findViewById(R.id.btnBagi);
 
+        //inisiasi recylerview
+        recyclerView = findViewById(R.id.recyclerView);
+        adapter = new RiwayatAdapter(list);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(MainActivity.this);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(adapter);
+
         //event klik untuk button
         btnTambah.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,13 +53,27 @@ public class MainActivity extends AppCompatActivity {
                 //ambil data dari Edittext
                 String angka1 = etAngka1.getText().toString();
                 String angka2 = etAngka2.getText().toString();
+                int hasil = Integer.valueOf(angka1) + Integer.valueOf(angka2);
+                tvHasil.setText(String.valueOf(hasil));
 
+                //update list
+                list.add(angka1 +"+"+ angka2 + "=" + hasil);
+                adapter.notifyDataSetChanged();
             }
         });
 
         btnKurang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //ambil data dari Edittext
+                String angka1 = etAngka1.getText().toString();
+                String angka2 = etAngka2.getText().toString();
+                int hasil = Integer.valueOf(angka1) - Integer.valueOf(angka2);
+                tvHasil.setText(String.valueOf(hasil));
+
+                //update list
+                list.add(angka1 +"-"+ angka2 + "=" + hasil);
+                adapter.notifyDataSetChanged();
 
             }
         });
@@ -51,14 +81,30 @@ public class MainActivity extends AppCompatActivity {
         btnKali.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //ambil data dari Edittext
+                String angka1 = etAngka1.getText().toString();
+                String angka2 = etAngka2.getText().toString();
+                int hasil = Integer.valueOf(angka1) * Integer.valueOf(angka2);
+                tvHasil.setText(String.valueOf(hasil));
 
+                //update list
+                list.add(angka1 +"*"+ angka2 + "=" + hasil);
+                adapter.notifyDataSetChanged();
             }
         });
 
         btnBagi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //ambil data dari Edittext
+                String angka1 = etAngka1.getText().toString();
+                String angka2 = etAngka2.getText().toString();
+                int hasil = Integer.valueOf(angka1) / Integer.valueOf(angka2);
+                tvHasil.setText(String.valueOf(hasil));
 
+                //update list
+                list.add(angka1 +"/"+ angka2 + "=" + hasil);
+                adapter.notifyDataSetChanged();
             }
         });
 

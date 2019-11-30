@@ -5,51 +5,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".Restauran">
 
     <TextView
         android:id="@+id/tvHasil"
         android:gravity="center"
-        android:textSize="100sp"
-        android:text="0"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    
-    <EditText
-        android:inputType="number"
-        android:id="@+id/etAngka1"
-        android:hint="angka 1"
+        android:textSize="50sp"
+        android:text="Restauran"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <EditText
-        android:inputType="number"
-        android:id="@+id/etAngka2"
-        android:hint="angka 2"
+        android:inputType="text"
+        android:id="@+id/etmakanan"
+        android:hint="Makanan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:inputType="text"
+        android:id="@+id/etqty"
+        android:hint="Qty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:inputType="text"
+        android:id="@+id/etharga"
+        android:hint="Harga"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/btnTambah"
-        android:text="Tambah"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/btnKurang"
-        android:text="Kurang"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/btnKali"
-        android:text="Kali"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/btnBagi"
-        android:text="Bagi"
+        android:id="@+id/btnsimpan"
+        android:text="Simpan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
